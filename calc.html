@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="calc.css">
+</head>
+
+
+
+<body>
+  <h1>Calculator</h1>
+  <div class="margin">
+    <div class="container">
+      <div class="display">
+        <input id="screen" class="inalid-input" type="text" placeholder="0">
+      </div>
+
+      <div class="btns">
+
+        <div class="btns">
+          <div class="new">
+            <button class="element" onclick="calculatePermutation()">Permutation</button>
+            <button class="comma" onclick="appendToScreen(',')">,</button>
+          </div>
+          <div class="row">
+            <button onclick="backspace()">CE</button>
+            <button onclick="fact()">X!</button>
+            <button class="btn">(</button>
+            <button class="btn">)</button>
+            <button class="btn">%</button>
+            <button onclick="screen.value=''">AC</button>
+          </div>
+          <div class="row">
+            <button onclick="sin()">sin</button>
+            <button onclick="pi()">pi</button>
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button class="btn">/</button>
+          </div>
+          <div class="row">
+            <button onclick="cos()">cos</button>
+            <button onclick="log()">log</button>
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn">*</button>
+          </div>
+          <div class="row">
+            <button onclick="tan()">tan</button>
+            <button onclick="sqrt()">root</button>
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn">-</button>
+          </div>
+          <div class="row">
+            <button onclick="e()">e</button>
+            <button onclick="antilog">anti </button>
+            <button class="btn">0</button>
+            <button class="btn">.</button>
+            <button onclick="screen.value=eval(screen.value)">=</button>
+            <button class="btn">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+<script>
+  var screen = document.querySelector('#screen');
+  var btn = document.querySelectorAll('.btn');
+
+  for (item of btn) {
+    item.addEventListener('click', (e) => {
+      btntext = e.target.innerText;
+
+
+
+
+      if (btntext == '*') {
+        btntext = '*';
+      }
+
+
+
+      if (btntext == '/') {
+        btntext = '/';
+      }
+
+
+
+      screen.value += btntext;
+
+    });
+    function appendToScreen(value) {
+      screen.value += value;
+    }
+
+  }
+  function sin() {
+    screen.value = Math.sin(screen.value);
+  }
+  function cos() {
+    screen.value = Math.cos(screen.value);
+  }
+  function tan() {
+    screen.value = Math.tan(screen.value);
+  }
+  function antilog() {
+    screen.value = Math.pow(10, screen.value);
+  }
+  function sqrt() {
+    screen.value = Math.sqrt(screen.value, 2);
+  }
+  function log() {
+    screen.value = Math.log(screen.value);
+  }
+  function pi() {
+    var currentValue = screen.value;
+    var lastChar = currentValue.charAt(currentValue.length - 1);
+    if (lastChar === '*' || lastChar === '+' || lastChar === '-') {
+
+      screen.value += Math.PI;
+    } else {
+
+      screen.value = Math.PI;
+    }
+  }
+
+
+  function e() {
+
+    var currentValue = screen.value;
+    var lastChar = currentValue.charAt(currentValue.length - 1);
+    if (lastChar === '*' || lastChar === '+' || lastChar === '-') {
+      screen.value += Math.E;
+    } else {
+      screen.value = Math.E;
+    }
+  }
+
+  function fact() {
+    var i, num, f;
+    f = 1
+    num = screen.value;
+    for (i = 1; i <= num; i++) {
+      f = f * i;
+    }
+    i = i - 1;
+
+    screen.value = f;
+  }
+  function backspace() {
+    screen.value = screen.value.substr(0, screen.value.length - 1);
+  }
+  // Permutation
+  function permutation(n, r) {
+
+    if (Number.isInteger(n) && Number.isInteger(r) && n >= r && n >= 0 && r >= 0) {
+
+      var nFactorial = 1;
+      for (var i = 1; i <= n; i++) {
+        nFactorial *= i;
+      }
+
+
+      var nMinusRFactorial = 1;
+      for (var j = 1; j <= (n - r); j++) {
+        nMinusRFactorial *= j;
+      }
+
+
+      return nFactorial / nMinusRFactorial;
+    } else {
+
+      return NaN;
+    }
+  }
+  // function calculatePermutation() {
+  //   
+  //   var n = parseInt(screen.value);
+  //   var r = parseInt(prompt("Enter the value of r:")); // Prompt the user to enter the value of r
+
+  //   
+  //   var result = permutation(n, r);
+  //   if (!isNaN(result)) {
+  //     screen.value = result;
+  //   } else {
+  //     screen.value = "Invalid input";
+  //   }
+  // }
+
+
+
+  function calculatePermutation() {
+
+    var input = screen.value.split(',');
+
+
+    if (input.length !== 2) {
+      screen.value = "Invalid input format. Please enter two integers separated by a comma.";
+      screen.classList.add('invalid-input');
+      return;
+    }
+
+
+    var n = parseInt(input[0].trim());
+    var r = parseInt(input[1].trim());
+
+
+    if (!isNaN(n) && !isNaN(r) && Number.isInteger(n) && Number.isInteger(r) && n >= r && n >= 0 && r >= 0) {
+
+      var result = permutation(n, r);
+      if (!isNaN(result)) {
+        screen.value = result;
+      } else {
+        screen.value = "Invalid input";
+      }
+    } else {
+
+      screen.value = "Invalid input. Please enter valid integer values for n and r.";
+      screen.classList.add('invalid-input');
+    }
+  }
+
+  function performPermutation() {
+
+    screen.classList.remove('invalid-input');
+  }
+
+
+
+
+
+
+</script>
+
+</html>

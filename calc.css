@@ -1,0 +1,139 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url('background-image.avif');
+  min-height: 100vh;
+
+
+}
+
+.container {
+  display: block;
+  width: 45%;
+  height: 60vh;
+  padding: 10px;
+  border-radius: 10px;
+
+  background-color: darkgray;
+
+  /* box-shadow: 12px 12px 20px #cbced1,
+    -12px -12px 20px #ffffff; */
+}
+
+.margin {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+
+  width: auto;
+
+}
+
+
+h1 {
+  display: block;
+  padding: 10px;
+  color: grey;
+  font-size: 50px;
+  text-align: center;
+  background-color: white;
+}
+
+
+
+
+.display #screen {
+  width: 97%;
+  height: 70px;
+  font-size: 35px;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  text-align: right;
+  padding-right: .5em;
+  background-color: #ecf0f3;
+  border-radius: 10px;
+  font-style: italic;
+  /* box-shadow: inset 8px 8px 8px #cbced1,
+    inset -8px -8px 8px #ffffff; */
+
+}
+
+.btns {
+  width: 100%;
+  margin-top: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+
+}
+
+.btns .row button {
+  width: 80px;
+  height: 30px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  margin: 5px;
+  border-radius: 4px;
+  /* box-shadow: 5px 5px 8px #00000020,
+    -5px -5px 8px #ffffff; */
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-weight: bold;
+
+}
+
+
+.btns .row button:hover {
+  /* box-shadow: inset 5px 5px 8px rgba(16, 16, 16, .1),
+    inset -2px -2px 8px #ffffff; */
+  background: lightgray;
+
+}
+
+.element {
+  width: 200px;
+  height: 50px;
+  margin-bottom: 0px;
+
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  margin: 5px;
+  border-radius: 4px;
+  font-weight: bold;
+
+}
+
+.new button:hover {
+  background: lightgray;
+}
+
+.comma {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0px;
+
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  margin: 5px;
+  border-radius: 4px;
+  font-weight: bold;
+
+}
+
+#screen.invalid-input {
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-weight: bold;
+}
